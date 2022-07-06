@@ -93,3 +93,16 @@ const HelloMessage = () => {
 }
 ```
 
+### MaterialUI
+
+> npm install @mui/material @emotion/react @emotion/styled
+
+---
+
+## State
+
+- props는 해당 컴포넌트의 입장에서 불변(immutable) 데이터이다.
+- 컴포넌트에서 변경 가능한 데이터를 관리하기 위해 사용하는 객체는 state이다.
+- State는 React.Component 클래스를 상속한 클래스 기반의 컴포넌트에만 존재한다.
+- State 값의 초기화는 객체 필드의 선언부 혹은 생성자에서 구현하며, state 값의 변경은 setState() 메서드를 이용한다.
+

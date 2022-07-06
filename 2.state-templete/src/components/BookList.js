@@ -6,21 +6,16 @@ class BookList extends Component {
     render() {
 
         //const books = this.props.books;
-        const {books} = this.props;
-        const bookItems = books.map( book => {
+        const bookItems = this.props.books.map( book => {
             return (
-                <ListItem key={book.ISBN}>
-                    <BookListItem book={book}/>
-                </ListItem>
+                <BookListItem book={book} key={book.ISBN} onSelectedBook={this.props.onSelectedBook}/>
             )
         })
 
         return (
-            <Container maxWidth='sm'>
-                <List>
-                    {bookItems}
-                </List>
-            </Container>
+            <List>
+                {bookItems}
+            </List>
         )
     }
 }
