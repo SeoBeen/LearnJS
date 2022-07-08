@@ -138,4 +138,48 @@ const HelloMessage = () => {
 - 여기서 return 하는 값들은 componentDidUpdate를 호출할 때 세번째 파라미터 값으로 전달된다.
 - DOM에 반영하기 직전의 상태들을 비교할때 사용한다.
 
+## MobX
 
+### MobX 개념
+(1/4)
+- MobX도 Flux와 마찬가지로 클라이언트 사이드에서 state를 관리하기 위해 사용하는 라이브러리 입니다.
+- MobX를 이용하면 컴포넌트의 state를 별도의 영역에서 관리하고 각 컴포넌트는 이에 접근할 수 있습니다.
+- MobX를 적용하기 위해서는 mobx.js 라이브러리와 mobx-react.js 라이브러리가 필요합니다.
+- MobX는 다수의 store를 관리할 수 있으며, 관리하는 데이터는 특정 데이터의 형태(Observable)로 관리 합니다.
+<br>
+
+(2/4)
+- MobX가 제공하는 대표적인 API는 observable, action, observer, computed가 있습니다.
+- MobX 라이브러리는 TypeScript가 적용되어 있으며 API의 사용은 데코레이터(@)를 이용하는 것이 일반적입니다.
+- @observable API는 store에서 관리하고자 하는 state 데이터를 의미하며 Observable 객체를 통해 관리됩니다.
+- @observer API는 @observable API로 관리되는 state를 참조하는 React 컴포넌트에 적용합니다.
+- observable 데이터 변경시 action과 runInAction이 있다. 여기서 비동기처리는 runInAction으로 한다.
+<br>
+
+(3/4)
+- @action은 관찰 대상 데이터 즉, observable state의 값을 변경하는 메서드에 적용합니다.
+- state에 대한 단순 조회와 같은 메서드에 적용하는 것은 의미가 없습니다.
+- @computed는 get 메서드에 일반적으로 적용하거나 Model 객체간 전환 시점에 적용합니다.
+- @computed가 적용된 메서드를 수행할 때 해당 observable state의 변화가 없을 경우 내부 로직을 생략합니다.
+<br>
+
+(4/4)
+- @observer는 store를 통해서 state를 관리하는 React.Component에 적용합니다.
+- @observer가 적용된 React.Component는 관련 observable state가 변경되면 렌더링을 수행합니다.
+- MobX는 다수의 store를 구성하는 것이 가능하며 @inject를 이용해 해당 @observer 컴포넌트의 store를 주입합니다.
+- 이외에도 MobX 라이브러리는 @autorun, @transaction과 같은 다양한 API를 제공합니다.
+
+### MobX의 적용
+(1/3)
+- React와 MobX를 통한 UI 구성은 다음과 같은 패키지의 구성을 갖습니다.
+    - container : React Component로 구성하며 store와 React Component를 연결하는 역할을 담당합니다.
+    - view : 순수 React Component로 구성하며 container에 포함됩니다.
+    - repository(or api) : 서버와 통신을 담당하는 클래스로 구성합니다.
+    - store : 전역 state를 관리하는 Store 클래스로 구성합니다.
+    - model : 서버의 model과 view model의 전환을 담당합니다.
+
+### Flux
+- Flux는 단방향 데이터 흐름을 보완하기 위해 개발된 아키텍처이며 View로 분산된 state를 통합 관리합니다.
+- Flux 아키텍처는 Action, Store, Dispatcher, View로 구성됩니다.
+- View 각각의 state는 Store를 이용해 통합 관리되며, Store의 데이터는 Action을 이용해 제어합니다.
+- Store에서 제어하는 state는 곧 연결된 View의 state와 다름없으며 Store의 state가 변경되면 View도 갱신됩니다.
