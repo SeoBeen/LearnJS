@@ -241,3 +241,28 @@ const HelloMessage = () => {
 ### 스코프
 - var : 함수 스코프(function-scoped)
 - let, const : 블록 스코프(block-scoped)
+
+
+## Promise
+- Promise
+- Promise.all
+    - promise를 동시에 실행
+- Promise.race
+    - promise중에서 제일 빠른것 하나만 실행
+
+## Generator
+- 함수의 실행을 중간에 멈췄다가 재개할 수 있는 기능
+- 다른 작업을 하다가 다시 돌아와서 next() 해주면 진행이 멈췄던 부분부터 이어서 실행 => ex) Redux Saga
+- next(), return(), throw()
+- next()에 인수 전달
+- iterable
+    - Symbol.iterator 메서드가 있다.
+    - Symbol.iterator는 iterator를 반환해야 한다.
+
+- iterator
+    - next 메서드를 가진다.
+    - next 메서드는 value와 done 속성을 가진 객체를 반환한다.
+    - 작업이 끝나면 done은 true가 된다.
+- 값을 미리 만들어 두지 않음
+
+
